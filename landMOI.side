@@ -507,7 +507,7 @@
       "id": "f09e38fb-c610-45f6-b93f-d1bbdd8280e9",
       "comment": "",
       "command": "pause",
-      "target": "15000",
+      "target": "20000",
       "targets": [],
       "value": ""
     }, {
@@ -521,7 +521,86 @@
         ["xpath=//div[14]/div[2]/table/tbody/tr/td", "xpath:position"],
         ["xpath=//td[contains(.,'新北市 永和區')]", "xpath:innerText"]
       ],
-      "value": ""
+      "value": "行政區"
+    }, {
+      "id": "e937c941-e9a6-4c94-a73a-12865d9d6e03",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#one-column-emphasis tr:nth-child(2) > td",
+      "targets": [
+        ["css=#one-column-emphasis tr:nth-child(2) > td", "css:finder"],
+        ["xpath=//table[@id='one-column-emphasis']/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'中和地政事務所')]", "xpath:innerText"]
+      ],
+      "value": "地政事務所"
+    }, {
+      "id": "a77681eb-d761-4877-a0a6-2a896f6c707a",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#one-column-emphasis tr:nth-child(3) > td",
+      "targets": [
+        ["css=#one-column-emphasis tr:nth-child(1) > td", "css:finder"],
+        ["xpath=//table[@id='one-column-emphasis']/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[14]/div[2]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'新北市 永和區')]", "xpath:innerText"]
+      ],
+      "value": "地段\t"
+    }, {
+      "id": "69469124-35ea-46d2-b4e1-048fc37209ef",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#one-column-emphasis tr:nth-child(4) > td",
+      "targets": [
+        ["css=#one-column-emphasis tr:nth-child(4) > td", "css:finder"],
+        ["xpath=//table[@id='one-column-emphasis']/tbody/tr[4]/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr[4]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'00980000')]", "xpath:innerText"]
+      ],
+      "value": "地號"
+    }, {
+      "id": "e626988a-7a58-4173-817c-eb1dac47fbf4",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//table[@id='one-column-emphasis']/tbody/tr[5]/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr[5]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'122.0 平方公尺')]", "xpath:innerText"]
+      ],
+      "value": "面積"
+    }, {
+      "id": "1f4d673e-b2b2-4569-a841-04ec20ec3036",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=#one-column-emphasis tr:nth-child(6) > td",
+      "targets": [
+        ["css=#one-column-emphasis tr:nth-child(6) > td", "css:finder"],
+        ["xpath=//table[@id='one-column-emphasis']/tbody/tr[6]/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr[6]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'149000 元/平方公尺')]", "xpath:innerText"]
+      ],
+      "value": "公告土地現值"
+    }, {
+      "id": "5b76650a-3b39-41a5-8557-4420f14aa133",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=tr:nth-child(7) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(7) > td:nth-child(2)", "css:finder"],
+        ["xpath=//table[@id='one-column-emphasis']/tbody/tr[7]/td", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr[7]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'29800 元/平方公尺')]", "xpath:innerText"]
+      ],
+      "value": "公告土地地價"
+    }, {
+      "id": "8018b765-34c5-4202-b45a-23f1cc855345",
+      "comment": "",
+      "command": "echo",
+      "target": "${行政區},${地政事務所},${地段},${地號},${面積},${公告土地現值},${公告土地地價}",
+      "targets": [],
+      "value": "fuchsia"
     }]
   }],
   "suites": [{
