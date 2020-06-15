@@ -1,12 +1,12 @@
 import pandas as pd 
 import re
 
-df = pd.read_csv('testing_ds_20200529.csv')
-addresses = df['address']
+# df = pd.read_csv('testing_ds_20200529.csv')
+# addresses = df['address']
 
-test_ad = addresses[0]
-test1 = "510彰化縣 員林鎮 浮圳里3鄰員東路一段171巷24弄10號" # section lane alley number
-test2 = "515彰化縣 大村鄉 過溝村5鄰過溝三巷2號" # village section
+# test_ad = addresses[0]
+# test1 = "510彰化縣 員林鎮 浮圳里3鄰員東路一段171巷24弄10號" # section lane alley number
+# test2 = "515彰化縣 大村鄉 過溝村5鄰過溝三巷2號" # village section
 
 def regex_matcher(regex):
     def matcher(string):
@@ -49,39 +49,52 @@ contains_floor = contains_regex(r'\w*樓')
 get_floor = regex_matcher(r'\w*樓')
 
 def parse_address(adr_string):
-    print("\n")
-    print(adr_string)
-    fields = {}
-    if contains_postal_code(adr_string):
-        (postal_code, adr_string) = get_postal_code(adr_string)
-        fields["postal code"] = postal_code
-    if contains_city(adr_string):
-        (city, adr_string) = get_city(adr_string)
-        fields["city"] = city
-    if contains_district(adr_string):
-        (district, adr_string) = get_district(adr_string)
-        fields["discrict"] = district
-    if contains_village(adr_string):
-        (village, adr_string) = get_village(adr_string)
-        fields["village"] = village
-    if contains_street(adr_string):
-        (street, adr_string) = get_street(adr_string)
-        fields["street"] = street
-    if contains_alley(adr_string):
-        (alley, adr_string) = get_alley(adr_string)
-        fields["alley"] = alley
-    if contains_lane(adr_string):
-        (lane, adr_string) = get_lane(adr_string)
-        fields["lane"] = lane
-    if contains_number(adr_string):
-        (number, adr_string) = get_number(adr_string)
-        fields["number"] = number
-    if contains_floor(adr_string):
-        (floor, adr_string) = get_floor(adr_string)
-        fields["floor"] = floor
-    print(fields)
+
+    try:
+        fields = {}
+        if contains_postal_code(adr_string):
+            (postal_code, adr_string) = get_postal_code(adr_string)
+            fields["postal code"] = postal_code
+        if contains_city(adr_string):
+            (city, adr_string) = get_city(adr_string)
+            fields["city"] = city
+        if contains_district(adr_string):
+            (district, adr_string) = get_district(adr_string)
+            fields["discrict"] = district
+        if contains_village(adr_string):
+            (village, adr_string) = get_village(adr_string)
+            fields["village"] = village
+        if contains_street(adr_string):
+            (street, adr_string) = get_street(adr_string)
+            fields["street"] = street
+        if contains_alley(adr_string):
+            (alley, adr_string) = get_alley(adr_string)
+            fields["alley"] = alley
+        if contains_lane(adr_string):
+            (lane, adr_string) = get_lane(adr_string)
+            fields["lane"] = lane
+        if contains_number(adr_string):
+            (number, adr_string) = get_number(adr_string)
+            fields["number"] = number
+        if contains_floor(adr_string):
+            (floor, adr_string) = get_floor(adr_string)
+            fields["floor"] = floor
+        return fields
+    except:
+        return {"error" : "error"}
 
 
-parse_address(test_ad)
-parse_address(test1)
-parse_address(test2)
+# parse_address(test_ad)
+# parse_address(test1)
+# parse_address(test2)
+
+def process_csv(csv_path,new_csv):
+    def parse_row(row):
+        return parse_address(row["address"])
+
+    df = pd.read_csv(csv_path)
+    df["parsed_address_dict"] = df.apply(parse_row, axis=1)
+    print(df)
+    df.to_csv(new_csv)
+
+process_csv("testing_ds_20200529.csv", "proccesed.csv")
