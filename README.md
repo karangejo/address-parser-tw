@@ -1,6 +1,3 @@
-# landMOI
-
-extract information from the site http://easymap.land.moi.gov.tw/
 
 ## Set Up
 
