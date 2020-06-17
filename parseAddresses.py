@@ -60,7 +60,7 @@ def parse_address(adr_string):
             fields["city"] = city
         if contains_district(adr_string):
             (district, adr_string) = get_district(adr_string)
-            fields["discrict"] = district
+            fields["district"] = district
         if contains_village(adr_string):
             (village, adr_string) = get_village(adr_string)
             fields["village"] = village
@@ -97,4 +97,4 @@ def process_csv(csv_path,new_csv):
     print(df)
     df.to_csv(new_csv)
 
-process_csv("testing_ds_20200529.csv", "proccesed.csv")
+process_csv("testing_ds_20200529.csv", "extracted.csv")
