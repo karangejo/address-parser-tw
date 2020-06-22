@@ -19,8 +19,6 @@ original dataset is testing_ds_20200529.csv
 
 1) AddressTreeExtract.py has already generated the AddressTree.json
 
-2) run parseAddresses.py to extract an address_obj and produce a new csv called extracted.csv
+2) run parseAddresses.py to extract an address_obj and produce a new csv called new_extracted.csv
 
-3) run AddressMatcher.py to test if address_obj matches the AddressTree and produce new csv called matched.csv
-
-So far only about 30% of addresses match..
+Improved to almost 80% addresses match...
